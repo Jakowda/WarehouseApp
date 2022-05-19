@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="menu">
+    <table>
+        <tr>
+            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+            <td> <a th:href="@{/allprod}">Produkty</a></td>
+            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+        </tr>
+    </table>
+</div>
+<table>
+    <form method="post" action="/save" th:object="${product}">
+        <tr><td>Nazwa:</td><td> Cena standardowa:</td><td>Jednostka:</td></tr>
+        <tr>
+            <td><input type="text" th:field="*{productName}" required></td>
+            <td><input type="text" th:field="*{unitStandardPrice}"></td>
+            <td>
+                <select th:field="*{unit}" required>
+                    <option th:each="unit:${unitList}" th:value="${unit.id}" th:text="${unit.unitName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr><button type="submit">Zapis</button></tr>
+    </form>
+</table>
+</body>
+</html>

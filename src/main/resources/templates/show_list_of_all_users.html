@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="menu">
+    <table>
+        <tr>
+            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+            <td> <a th:href="@{/allprod}">Produkty</a></td>
+            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+        </tr>
+    </table>
+</div>
+<h1>Użytkownicy:</h1>
+<!--<a th:href="@{/addprod}">Dodaj produkt</a>-->
+<table border="1 solid">
+
+
+    <tr th:each="user:${userList}">
+        <td th:text="|${user.firstName} ${user.lastName}|">Nazwa Nazwisko uzytkownika</td>
+        <td>
+            <a th:href="@{'/users_warehouse_list/'+${user.id}}">Lista magazynów</a>
+        </td>
+        <td>
+            <a th:href="@{'/delete_user/'+${user.id}}">Usun</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

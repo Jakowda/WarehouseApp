@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Klienci</title>
+</head>
+<body>
+<div class="menu">
+    <table>
+        <tr>
+            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+            <td> <a th:href="@{/allprod}">Produkty</a></td>
+            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+            <td> <a th:href="@{/show_all_vendors}">Lista dostawcow</a></td>
+        </tr>
+    </table>
+</div>
+<h1>Klienci:</h1>
+<a th:href="@{/add_customer}">Dodaj nowego klienta</a>
+<table border="1 solid">
+
+    <tr><td>Nazwisko klienta</td></tr>
+    <tr th:each="customer:${customerList}">
+        <td th:text="|${customer.firstName} ${customer.lastName}|">Nazwisko klienta</td>
+        <td>
+            <a th:href="@{'/edit_customer/'+${customer.id}}">Edytuj</a>
+        </td>
+        <td>
+            <a th:href="@{'/delete_customer/'+${customer.id}}">Usun</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="menu">
+    <table>
+        <tr>
+            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+            <td> <a th:href="@{/allprod}">Produkty</a></td>
+            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+            <td> <a th:href="@{/show_all_vendors}">Lista dostawcow</a></td>
+        </tr>
+    </table>
+</div>
+<table>
+    <form method="post" action="/save_vendor" th:object="${vendor}">
+        <tr><td>Nazwa:</td><td> Nazwisko własciciela:</td><td>Email:</td><td>Telefon kontaktowy:</td></tr>
+        <tr>
+            <input type="hidden" th:field="*{id}">
+            <td><input type="text" th:field="*{companyName}" required></td>
+            <td><input type="text" th:field="*{ownerName}" required></td>
+            <td><input type="text" th:field="*{email}"></td>
+            <td><input type="text" th:field="*{contactPhone}"></td>
+        </tr>
+        <tr><button type="submit">Zapis</button></tr>
+    </form>
+</table>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nowe zamówienie sprzedaży</title>
+</head>
+<body>
+<div class="menu">
+  <table>
+    <tr>
+      <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+      <td> <a th:href="@{/allprod}">Produkty</a></td>
+      <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+      <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+      <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+      <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+    </tr>
+  </table>
+</div>
+<form method="post" action="/save_new_salesorder" th:object="${salesOrder}">
+  <table border="1 solid">
+    <div>
+      <tr><td>Nazwa zamowienia</td><td>Data zamówienia:</td><td>Status realizacji zamówienia:</td><td>Klient:</td><td>Magazyn</td></tr>
+      <tr>
+        <input type="hidden" th:field="*{id}">
+        <td><input type="text" th:field="*{salesOrderName}" required></td>
+        <td><input type="date" th:field="*{salesOrderDate}" required></td>
+        <td>
+          <select th:field="*{orderStatus}">
+            <option value="false">Niezrealizowane</option>
+            <option value="true">Zrealizowane</option>
+          </select>
+        </td>
+        <td>
+          <select th:field="*{client}" required>
+            <option th:each="client:${clientList}" th:value="${client.id}" th:text="|${client.firstName} ${client.lastName}|"></option>
+          </select>
+        </td>
+        <td>
+          <select th:field="*{warehouse}" required>
+            <option th:each="warehouse:${warehouseList}" th:value="${warehouse.warehouse_id}" th:text="${warehouse.warehouseName}"></option>
+          </select>
+        </td>
+      </tr>
+      <tr><td>Zamowione produkty:</td></tr>
+      <tr>
+        <td>LP:</td><td>Produkt</td><td>Ilość</td><td>Cena zakupu</td>
+      </tr>
+      <tr th:each="line, lineStat:*{salesOrderLineList}">
+
+        <td><p th:text="${lineStat.index}">1</p></td>
+        <td>
+          <select th:field="*{salesOrderLineList[__${lineStat.index}__].product}">
+            <option th:each="product:${productList}"
+                    th:value="${product.id}"
+                    th:text="${product.productName}">One</option>
+          </select>
+        </td>
+        <td>
+          <input th:field="*{salesOrderLineList[__${lineStat.index}__].id}" th:type="hidden">
+          <input th:field="*{salesOrderLineList[__${lineStat.index}__].orderedAmount}"></td>
+        </td>
+        <td>
+          <input th:field="*{salesOrderLineList[__${lineStat.index}__].salesPrice}"></td>
+        </td>
+
+        <td>
+          <button type="submit" th:name="remove_line" th:value="${lineStat.index}">Usun</button>
+        </td>
+      </tr>
+      <button type="submit" name="add_line">Dodaj linię</button>
+    </div>
+
+    <tr>
+      <p><button type="submit">Zapis</button></p>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

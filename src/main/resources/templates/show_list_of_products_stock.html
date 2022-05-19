@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="menu">
+    <table>
+        <tr>
+            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+            <td> <a th:href="@{/allprod}">Produkty</a></td>
+            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+        </tr>
+    </table>
+</div>
+<div>
+
+    <h2>Lista stanów magazynowych</h2>
+
+    <form method="post" action="/show_stock_quantity_from_warehouse" th:object="${searchDTO}">
+        <table border="1 solid black">
+            <tr><td>Filtracja po nazwie magazynu<td/></tr>
+            <tr><td>
+                    <select th:field="*{warehouse}">
+                    <option th:each="warehouse:${warehouseList}" th:value="${warehouse.warehouse_id}" th:text="${warehouse.warehouseName}"></option>
+                </select>
+                </td>
+                <td><button type="submit">Filtruj</button></td>
+            </tr>
+        </table>
+    </form>
+    <form method="post" action="/show_stock_quantity_of_products" th:object="${searchDTO}">
+        <table border="1 solid black">
+            <tr><td>Filtracja po nazwie produktu<td/></tr>
+            <tr><td>
+                <select th:field="*{product}">
+                    <option th:each="product:${productList}" th:value="${product.id}" th:text="${product.productName}"></option>
+                </select>
+            </td>
+                <td><button type="submit">Filtruj</button></td>
+            </tr>
+        </table>
+    </form>
+    <br><br>
+    <table border="1 solid">
+        <tr>
+            <td>Nazwa produktu</td>
+            <td>Stan magazynowy</td>
+            <td>Magazyn</td>
+        </tr>
+        <tr th:each="stockQuantity:${productStockQuantityList}">
+            <td th:text="${stockQuantity.product.getProductName()}">Produkt</td>
+            <td th:text="${stockQuantity.quantity}">Stan magazynowy</td>
+            <td th:text="${stockQuantity.warehouse.getWarehouseName()}">Magazyn</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

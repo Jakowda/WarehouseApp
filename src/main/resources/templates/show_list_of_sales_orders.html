@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="menu">
+    <table>
+        <tr>
+            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
+            <td> <a th:href="@{/allprod}">Produkty</a></td>
+            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
+            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
+            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
+            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
+            <td> <a th:href="@{/show_all_vendors}">Lista dostawcow</a></td>
+        </tr>
+    </table>
+</div>
+<div>
+
+    <h2>Lista zamówień sprzedaży</h2>
+    <a th:href="@{/add_new_salesorder}">Dodaj zamówień sprzedaży</a>
+    <table border="1 solid">
+        <tr>
+            <td>Nazwa zamowienia</td>
+            <td>Data zamówień sprzedaży</td>
+            <td>Status</td>
+        </tr>
+        <tr th:each="salesorder:${salesOrderList}">
+            <td th:text="${salesorder.salesOrderName}">Nazwa zamowienia</td>
+            <td th:text="${salesorder.salesOrderDate}">Data zamowienia sprzedaży</td>
+            <td th:text="${salesorder.orderStatus != true}? Niewykonane : Wykonane">Status</td>
+            <td><a th:href="@{'/edit_sales_order/'+${salesorder.id}}">Edytuj zamowienie</a></td>
+            <td><a th:href="@{'/delete_sales_order/'+${salesorder.id}}">Usuń</a></td>
+            <td  th:if="${salesorder.orderStatus != true}"><a th:href="@{'/set_salesorder_as_done/'+${salesorder.id}}" >Oznacz jako wykonane</a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
