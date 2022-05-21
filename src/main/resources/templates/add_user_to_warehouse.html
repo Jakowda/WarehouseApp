@@ -17,15 +17,18 @@
         </tr>
     </table>
 </div>
-<h1>Wybierz magazyn do którego chcesz dodać użytkownika:</h1>
+<h1 th:text="|Wybierz magazyn do którego chcesz dodać lub usunąć użytkownika: ${user.firstName} ${user.lastName}|">Wybierz magazyn do którego chcesz dodać użytkownika:</h1>
 <table border="1 solid">
 
 
     <tr th:each="warehouse:${warehouseList}">
         <td th:text="${warehouse.warehouseName}">Nazwa magazynu</td>
-<!--        <td>-->
-<!--            <a th:href="@{'/add_to_warehouse/'+${warehouse.id}}">Dodaj</a>-->
-<!--        </td>-->
+        <td>
+            <a th:href="@{'/add_to_warehouse/'+${warehouse.warehouse_id}+'/user/'+${user.id}}">Dodaj</a>
+        </td>
+        <td>
+            <a th:href="@{'/remove_from_warehouse/'+${warehouse.warehouse_id}+'/user/'+${user.id}}">Usun</a>
+        </td>
     </tr>
 </table>
 

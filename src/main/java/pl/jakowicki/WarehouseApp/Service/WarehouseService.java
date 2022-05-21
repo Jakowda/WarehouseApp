@@ -21,7 +21,7 @@ public class WarehouseService {
         return (List<Warehouse>) warehouseRepository.findAll();
     }
 
-    public List<Warehouse> getWarehousesListThatUserCanByAddedTo(User user) {
+    public List<Warehouse> getWarehousesListThatUserCanBeAddedTo(User user) {
         List<Warehouse> usersWarehouseList = user.getWarehouses();
         System.out.println(usersWarehouseList);
         List<Warehouse> warehouseList = findAllWarehouses();
@@ -32,7 +32,7 @@ public class WarehouseService {
                 {
                     System.out.println(warehouse2);
                     warehouseList.remove(warehouseList.indexOf(warehouse2));
-                }c 
+                }
             }
         }
         System.out.println(warehouseList);
