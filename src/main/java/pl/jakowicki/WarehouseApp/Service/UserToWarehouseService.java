@@ -21,4 +21,12 @@ public class UserToWarehouseService {
     public void saveNewRelation(UserToWarehouse userToWarehouse) {
         userToWarehouseRepository.save(userToWarehouse);
     }
+
+    public void deleteUserWarehouseConnection(UserToWarehouse userToWarehouse) {
+        userToWarehouseRepository.delete(userToWarehouse);
+    }
+
+    public UserToWarehouse findRelationByWarehouseAndUserId(Long warehouseId, Long userId) {
+        return userToWarehouseRepository.findAllByWarehouseAndUserID(warehouseId, userId);
+    }
 }

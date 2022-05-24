@@ -8,4 +8,8 @@ public interface UserToWarehouseRepository extends CrudRepository<UserToWarehous
     @Query(value = "SELECT * FROM users_to_warehouses WHERE warehouse_id = ?1 AND user_id = ?2",
             nativeQuery = true)
     UserToWarehouse findAllByWarehouseAndUserID(Long warehouseId, Long userId);
+
+//    @Query(value = "DELETE FROM users_to_warehouses WHERE warehouse_id = ?1 AND user_id = ?2",
+//            nativeQuery = true)
+//    void deleteConnection(userToWarehouse);
 }

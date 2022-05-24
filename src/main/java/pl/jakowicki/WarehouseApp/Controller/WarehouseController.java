@@ -1,7 +1,9 @@
 package pl.jakowicki.WarehouseApp.Controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pl.jakowicki.WarehouseApp.Model.User;
@@ -24,6 +26,16 @@ public class WarehouseController {
         this.warehouseService = warehouseService;
         this.userService = userService;
         this.userToWarehouseService = userToWarehouseService;
+    }
+
+    @GetMapping(value="warehouseList")
+    public String showWarehouseList(Model model, Authentication authentication)
+    {
+        User user = userService.findUserByEmail(authentication.getName());
+        List<Warehouse> warehouseList = user.getWarehouses();
+        model.addAttribute("warehouseList", warehouseList);
+        System.out.println(warehouseList);
+        return "show_warehouses";
     }
 
     @GetMapping(value="usersList")
@@ -65,4 +77,19 @@ public class WarehouseController {
         }
         return "redirect:/users_warehouse_list/"+userId;
     }
+
+    @GetMapping(value = "/remove_from_warehouse/{warehouseId}/user/{userId}")
+    public String deleteUserWarehouseConnection(@PathVariable(value = "warehouseId") Long warehouseId, @PathVariable(value = "userId") Long userId)
+    {
+        UserToWarehouse userToWarehouse = userToWarehouseService.findRelationByWarehouseAndUserId(warehouseId,userId );
+        userToWarehouseService.deleteUserWarehouseConnection(userToWarehouse);
+        return "redirect:/users_warehouse_list/"+userId;
+    }
+
+    @GetMapping(value = "/edit_warehouse/{warehouseId}")
+    public String editWarehouseName(Model model, @PathVariable(value = "warehouseId") Long warehouseId)
+    {
+        Warehouse warehouse = warehouseService.
+    }
+
 }

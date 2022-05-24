@@ -2,7 +2,7 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edycja zamówienia zakupu</title>
+    <title>Title</title>
 </head>
 <body>
 <div class="menu">
@@ -14,13 +14,18 @@
             <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
             <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
             <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
-            <td> <a th:href="@{/warehouseList}">Lista Magazynów</a></td>
         </tr>
     </table>
-    <br>
-    <br>
-    <br>
-    <a th:href="@{/usersList}">List uzytkowników</a>
 </div>
+<h1>Lista magazynów</h1>
+<table border="1 solid">
+    <tr th:each="warehouse:${warehouseList}">
+        <td th:text="${warehouse.warehouseName}">Nazwa magazynu</td>
+        <td><a th:href="@{'/edit_warehouse/'+${warehouse.warehouse_id}}">Zmien nazwę magazynu</a></td>
+    </tr>
+</table>
+<br>
+<br>
+
 </body>
 </html>

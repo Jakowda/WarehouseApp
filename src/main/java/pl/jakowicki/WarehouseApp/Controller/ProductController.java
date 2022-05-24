@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import pl.jakowicki.WarehouseApp.Model.Product;
 import pl.jakowicki.WarehouseApp.Model.Unit;
 import pl.jakowicki.WarehouseApp.Repository.UnitRepository;
@@ -62,7 +63,7 @@ public class ProductController {
         return "edit_product";
     }
 
-    @GetMapping("/save_edited_product/{id}")
+    @PostMapping("/save_edited_product/{id}")
     public String saveEditedProduct(Model model, Product product, @PathVariable(name = "id") Long id)
     {
         product.setId(id);

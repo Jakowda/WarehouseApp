@@ -19,7 +19,7 @@
 </div>
 <h1>Edycja produktu</h1>
 <table>
-    <form method="get" action="#" th:action="@{'/save_edited_product/'+${id}}" th:object="${product}">
+    <form method="post" action="#" th:action="@{'/save_edited_product/'+${id}}" th:object="${product}">
         <tr><td>Nazwa:</td><td> Cena standardowa:</td><td>Jednostka:</td></tr>
         <tr>
             <td><input type="text" th:field="*{productName}" required></td>

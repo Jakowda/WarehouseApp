@@ -21,23 +21,6 @@ public class WarehouseService {
         return (List<Warehouse>) warehouseRepository.findAll();
     }
 
-    public List<Warehouse> getWarehousesListThatUserCanBeAddedTo(User user) {
-        List<Warehouse> usersWarehouseList = user.getWarehouses();
-        System.out.println(usersWarehouseList);
-        List<Warehouse> warehouseList = findAllWarehouses();
-        System.out.println(warehouseList);
-        for (Warehouse warehouse: usersWarehouseList) {
-            for (Warehouse warehouse2: warehouseList) {
-                if(warehouse2.getWarehouse_id().equals(warehouse.getWarehouse_id()))
-                {
-                    System.out.println(warehouse2);
-                    warehouseList.remove(warehouseList.indexOf(warehouse2));
-                }
-            }
-        }
-        System.out.println(warehouseList);
-        return warehouseList;
-    }
 
 //    public void addUserToWarehouse(Long userId, Long warehouseId)
 //    {
