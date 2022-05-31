@@ -3,9 +3,7 @@ package pl.jakowicki.WarehouseApp.Controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import pl.jakowicki.WarehouseApp.Model.User;
 import pl.jakowicki.WarehouseApp.Model.UserToWarehouse;
 import pl.jakowicki.WarehouseApp.Model.Warehouse;
@@ -89,7 +87,19 @@ public class WarehouseController {
     @GetMapping(value = "/edit_warehouse/{warehouseId}")
     public String editWarehouseName(Model model, @PathVariable(value = "warehouseId") Long warehouseId)
     {
-        Warehouse warehouse = warehouseService.
+        Warehouse warehouse = warehouseService.findById(warehouseId);
+        System.out.println(warehouse);
+        model.addAttribute("warehouse", warehouse);
+        return "edit_warehouse";
+    }
+
+    @PostMapping(value ="/save_edited_warehouse/{warehouse_id}")
+    public String saveWarehouse(Warehouse warehouse, @PathVariable(name="warehouse_id") Long warehouseId)
+    {
+        System.out.println(warehouse);
+        warehouse.setWarehouse_id(warehouseId);
+        warehouseService.saveWarehouse(warehouse);
+        return "redirect:/warehouseList";
     }
 
 }

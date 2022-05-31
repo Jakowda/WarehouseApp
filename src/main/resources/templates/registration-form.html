@@ -5,6 +5,7 @@
     <title>Zaloguj się</title>
 </head>
 <body>
+<header id="header" class="alt" th:include="menu :: title-menu" />
 <div class="container">
     <h1 class="login-header">Zarejestruj się</h1>
     <form action="/register" method="post" th:object="${user}">

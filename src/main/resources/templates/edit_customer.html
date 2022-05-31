@@ -5,18 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<div class="menu">
-    <table>
-        <tr>
-            <td><a th:href="@{/show_delivery_list}">Dostawy</a></td>
-            <td> <a th:href="@{/allprod}">Produkty</a></td>
-            <td> <a th:href="@{/purchaseorder_list}">Zamówienia zakupu</a></td>
-            <td> <a th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a></td>
-            <td> <a th:href="@{/show_all_products_stock_value}">Stany magazynowe</a></td>
-            <td> <a th:href="@{/show_all_customers}">Lista klientów</a></td>
-        </tr>
-    </table>
-</div>
+<header id="header" class="alt" th:include="menu :: title-menu" />
 <table>
     <form method="post" action="/save_customer" th:object="${customer}">
         <tr><td>Imie:</td><td> Nazwisko:</td><td>Email:</td><td>Telefon:</td></tr>

@@ -1,11 +1,11 @@
 package pl.jakowicki.WarehouseApp.Service;
 
 import org.springframework.stereotype.Service;
-import pl.jakowicki.WarehouseApp.Model.User;
 import pl.jakowicki.WarehouseApp.Model.Warehouse;
 import pl.jakowicki.WarehouseApp.Repository.WarehouseRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WarehouseService {
@@ -19,6 +19,14 @@ public class WarehouseService {
     public List<Warehouse> findAllWarehouses()
     {
         return (List<Warehouse>) warehouseRepository.findAll();
+    }
+
+    public Warehouse findById(Long warehouseId) {
+        return warehouseRepository.findWarehouseById(warehouseId);
+    }
+
+    public void saveWarehouse(Warehouse warehouse) {
+        warehouseRepository.save(warehouse);
     }
 
 

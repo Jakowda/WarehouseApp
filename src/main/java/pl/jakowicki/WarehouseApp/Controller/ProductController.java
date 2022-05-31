@@ -64,7 +64,7 @@ public class ProductController {
     }
 
     @PostMapping("/save_edited_product/{id}")
-    public String saveEditedProduct(Model model, Product product, @PathVariable(name = "id") Long id)
+    public String saveEditedProduct(Product product, @PathVariable(name = "id") Long id)
     {
         product.setId(id);
         productService.saveEditedProduct(product);

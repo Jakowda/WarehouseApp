@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja magazynu</title>
+</head>
+<body>
+<header id="header" class="alt" th:include="menu :: title-menu" />
+<h1>Edycja magazynu</h1>
+<table>
+    <form method="post" action="#" th:action="@{'/save_edited_warehouse/' + *{warehouse_id}}" th:object="${warehouse}">
+        <tr><td>Nazwa:</td></tr>
+        <tr>
+            <td><input type="text" th:field="*{warehouseName}" required></td>
+        </tr>
+        <tr><button type="submit">Zapis</button></tr>
+    </form>
+</table>
+</body>
+</html>

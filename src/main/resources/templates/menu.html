@@ -1,0 +1,16 @@
+<header th:fragment="title-menu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/}">WarehouseApp</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+        <a class="nav-item nav-link active" th:href="@{/show_delivery_list}">Dostawy</a>
+        <a class="nav-item nav-link active" th:href="@{/allprod}">Produkty</a>
+        <a class="nav-item nav-link active" th:href="@{/purchaseorder_list}">Zamówienia zakupu</a>
+        <a class="nav-item nav-link active" th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a>
+        <a class="nav-item nav-link active" th:href="@{/show_all_products_stock_value}">Stany magazynowe</a>
+        <a class="nav-item nav-link active" th:href="@{/show_all_customers}">Lista klientów</a>
+        <a class="nav-item nav-link active" th:href="@{/warehouseList}">Lista Magazynów</a>
+            </div>
+        </div>
+    </nav>
+</header>

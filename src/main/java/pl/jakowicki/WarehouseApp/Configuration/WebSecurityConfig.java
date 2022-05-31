@@ -2,7 +2,6 @@ package pl.jakowicki.WarehouseApp.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -18,6 +17,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/register", "/confirmation").permitAll()
                 //.mvcMatchers(HttpMethod.GET, "/show_all_products_stock_value").hasRole( "ADMIN")
                 //.mvcMatchers(HttpMethod.GET, "/test").hasRole( "GUEST")
+                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/*.css").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -27,6 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
         http.csrf().disable();
+
     }
 
     @Bean
