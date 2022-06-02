@@ -8,21 +8,20 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <h1>Produkty:</h1>
 <a th:href="@{/addprod}">Dodaj produkt</a>
-<table border="1 solid">
+<table class="table table-bordered">
 
-
+    <thead><td>Nazwa produtu</td><td>Opcje</td></thead>
     <tr th:each="product:${listOfProducts}">
         <td th:text="${product.productName}">Nazwa produktu</td>
         <td>
             <a th:href="@{'/edit_product/'+${product.id}}">Edytuj produkt</a>
-        </td>
-        <td>
             <a th:href="@{'/delete_product/'+${product.id}}">Usun</a>
         </td>
     </tr>
 </table>
-
+</div>
 </body>
 </html>

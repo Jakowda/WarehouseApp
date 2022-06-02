@@ -8,12 +8,13 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <div>
 
     <h2>Lista stanów magazynowych</h2>
 
     <form method="post" action="/show_stock_quantity_from_warehouse" th:object="${searchDTO}">
-        <table border="1 solid black">
+        <table class="table table-bordered">
             <tr><td>Filtracja po nazwie magazynu<td/></tr>
             <tr><td>
                     <select th:field="*{warehouse}">
@@ -25,7 +26,7 @@
         </table>
     </form>
     <form method="post" action="/show_stock_quantity_of_products" th:object="${searchDTO}">
-        <table border="1 solid black">
+        <table class="table table-bordered">
             <tr><td>Filtracja po nazwie produktu<td/></tr>
             <tr><td>
                 <select th:field="*{product}">
@@ -37,7 +38,7 @@
         </table>
     </form>
     <br><br>
-    <table border="1 solid">
+    <table class="table table-bordered">
         <tr>
             <td>Nazwa produktu</td>
             <td>Stan magazynowy</td>
@@ -50,6 +51,6 @@
         </tr>
     </table>
 </div>
-
+</div>
 </body>
 </html>

@@ -8,8 +8,10 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <h1>Lista magazynów</h1>
-<table border="1 solid">
+<table class="table table-bordered">
+    <thead><td>Nazwa magazynu</td><td>Opcje</td></thead>
     <tr th:each="warehouse:${warehouseList}">
         <td th:text="${warehouse.warehouseName}">Nazwa magazynu</td>
         <td><a th:href="@{'/edit_warehouse/'+${warehouse.warehouse_id}}">Zmien nazwę magazynu</a></td>

@@ -8,14 +8,14 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
-</div>
+<div class="container-xl bg-light bg-gradient">
 <form th:action="@{/login}" method="post">
-  <div><label> User Name : <input type="text" name="username"/> </label></div>
-  <div><label> Password: <input type="password" name="password"/> </label></div>
-  <div><input type="submit" value="Sign In"/></div>
+      <div class="mb-3"><label> User Name :   </label><input type="text" name="username"/></div>
+      <div class="mb-3"><label> Password:  </label><input type="password" name="password"/> </div>
+      <div><input type="submit" value="Sign In"/></div>
 </form>
 <br>
-<td><a th:href="@{/}">Wróć do strony głównej</a></td>
 <td><a th:href="@{/register}">Utwórz konto</a></td>
+</div>
 </body>
 </html>

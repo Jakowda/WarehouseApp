@@ -8,21 +8,20 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
-
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <h1>Klienci:</h1>
 <a th:href="@{/add_customer}">Dodaj nowego klienta</a>
-<table border="1 solid">
+<table class="table table-bordered">
 
-    <tr><td>Nazwisko klienta</td></tr>
+    <tr><td>Nazwisko klienta</td><td>Opcje</td></tr>
     <tr th:each="customer:${customerList}">
         <td th:text="|${customer.firstName} ${customer.lastName}|">Nazwisko klienta</td>
         <td>
             <a th:href="@{'/edit_customer/'+${customer.id}}">Edytuj</a>
-        </td>
-        <td>
             <a th:href="@{'/delete_customer/'+${customer.id}}">Usun</a>
         </td>
     </tr>
 </table>
+</div>
 </body>
 </html>

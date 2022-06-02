@@ -8,25 +8,27 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <div>
 
     <h2>Lista zamowien zakupu</h2>
     <a th:href="@{/add_purchase_order}">Dodaj Zamówienie zakupu</a>
-    <table border="1 solid">
+    <table class="table table-bordered">
         <tr>
             <td>Nazwa zamówienia zakupu</td>
             <td>Data zamówienia zakupu</td>
             <td>Status</td>
+            <td>Opcje</td>
         </tr>
         <tr th:each="purchaseorder:${purchaseOrderList}">
             <td th:text="${purchaseorder.purchaseOrderName}">Nazwa zamowienia zakupu</td>
             <td th:text="${purchaseorder.purchaseOrderDate}">Data zamowienia zakupu</td>
             <td th:text="${purchaseorder.orderState != true}? Niewykonane : Wykonane">Status</td>
-            <td><a th:href="@{'/edit_purchase_order/'+${purchaseorder.id}}">Edytuj zamowienie</a></td>
-            <td><a th:href="@{'/delete_purchase_order/'+${purchaseorder.id}}">Usuń</a></td>
+            <td><a th:href="@{'/edit_purchase_order/'+${purchaseorder.id}}">Edytuj zamowienie</a>
+            <a th:href="@{'/delete_purchase_order/'+${purchaseorder.id}}">Usuń</a></td>
         </tr>
     </table>
 </div>
-
+</div>
 </body>
 </html>

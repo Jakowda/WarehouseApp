@@ -8,22 +8,22 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
-
-<h1>Użytkownicy:</h1>
+<div class="container-xl bg-light bg-gradient" style="height:800px">
+<h1 style="padding-top:10px">Użytkownicy:</h1>
 <!--<a th:href="@{/addprod}">Dodaj produkt</a>-->
-<table border="1 solid">
+<table class="table table-bordered">
 
-
+    <thead><td>Nazwisko uzytkownika</td><td>Opcje</td></thead>
     <tr th:each="user:${userList}">
-        <td th:text="|${user.firstName} ${user.lastName}|">Nazwa Nazwisko uzytkownika</td>
+        <td th:text="|${user.firstName} ${user.lastName}|">Nazwisko uzytkownika</td>
         <td>
             <a th:href="@{'/users_warehouse_list/'+${user.id}}">Lista magazynów</a>
-        </td>
-        <td>
             <a th:href="@{'/delete_user/'+${user.id}}">Usun</a>
         </td>
     </tr>
 </table>
+    <br>
+</div>
 
 </body>
 </html>

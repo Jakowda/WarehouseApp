@@ -8,22 +8,21 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
-
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <h1>Dostawy:</h1>
 <a th:href="@{/add_new_delivery}">Wprowadź dostawę</a>
-<table border="1 solid">
+<table class="table table-bordered">
 
-    <thead><td>Nazwa dostawy</td><td>Data dostawy</td></thead>
+    <thead><td>Nazwa dostawy</td><td>Data dostawy</td><td>Opcje</td></thead>
     <tr th:each="delivery:${orderDeliveryList}">
         <td th:text="*{delivery.deliveryName}">Nazwa dostawy</td>
         <td th:text="*{delivery.deliveryDate}">deliveryDate</td>
         <td>
             <a th:href="@{'/edit_delivery/'+${delivery.id}}">Edytuj dostawe</a>
-        </td>
-        <td>
             <a th:href="@{'/delete_delivery/'+${delivery.id}}">Usun dostawe</a>
         </td>
     </tr>
 </table>
+</div>
 </body>
 </html>

@@ -8,20 +8,20 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 <h1>Dostawcy:</h1>
 <a th:href="@{/add_vendor}">Dodaj nowego dostawcę</a>
-<table border="1 solid">
+<table class="table table-bordered">
 
-    <tr><td>Nazwa dostawcy</td></tr>
+    <tr><td>Nazwa dostawcy</td><td>Opcje</td></tr>
     <tr th:each="vendor:${vendorsList}">
         <td th:text="*{vendor.companyName}">Nazwisko klienta</td>
         <td>
             <a th:href="@{'/edit_vendor/'+${vendor.id}}">Edytuj</a>
-        </td>
-        <td>
             <a th:href="@{'/delete_vendor/'+${vendor.id}}">Usun</a>
         </td>
     </tr>
 </table>
+</div>
 </body>
 </html>

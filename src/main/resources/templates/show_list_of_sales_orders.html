@@ -8,23 +8,24 @@
 </head>
 <body>
 <header id="header" class="alt" th:include="menu :: title-menu" />
-<div>
+<div class="container-xl bg-light bg-gradient" style="height:800px">
 
     <h2>Lista zamówień sprzedaży</h2>
     <a th:href="@{/add_new_salesorder}">Dodaj zamówień sprzedaży</a>
-    <table border="1 solid">
+    <table class="table table-bordered">
         <tr>
             <td>Nazwa zamowienia</td>
             <td>Data zamówień sprzedaży</td>
             <td>Status</td>
+            <td>Opcje</td>
         </tr>
         <tr th:each="salesorder:${salesOrderList}">
             <td th:text="${salesorder.salesOrderName}">Nazwa zamowienia</td>
             <td th:text="${salesorder.salesOrderDate}">Data zamowienia sprzedaży</td>
             <td th:text="${salesorder.orderStatus != true}? Niewykonane : Wykonane">Status</td>
-            <td><a th:href="@{'/edit_sales_order/'+${salesorder.id}}">Edytuj zamowienie</a></td>
-            <td><a th:href="@{'/delete_sales_order/'+${salesorder.id}}">Usuń</a></td>
-            <td  th:if="${salesorder.orderStatus != true}"><a th:href="@{'/set_salesorder_as_done/'+${salesorder.id}}" >Oznacz jako wykonane</a></td>
+            <td><a th:href="@{'/edit_sales_order/'+${salesorder.id}}">Edytuj zamowienie</a>
+            <a th:href="@{'/delete_sales_order/'+${salesorder.id}}">Usuń</a>
+            <a th:if="${salesorder.orderStatus != true}" th:href="@{'/set_salesorder_as_done/'+${salesorder.id}}" >Oznacz jako wykonane</a></td>
         </tr>
     </table>
 </div>
