@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
 <h1 th:text="|Wybierz magazyn do którego chcesz dodać lub usunąć użytkownika: ${user.firstName} ${user.lastName}|">Wybierz magazyn do którego chcesz dodać użytkownika:</h1>
-<table border="1 solid">
+    <table class="table table-bordered">
 
 
     <tr th:each="warehouse:${warehouseList}">
@@ -20,6 +18,6 @@
         </td>
     </tr>
 </table>
-
+</div>
 </body>
 </html>

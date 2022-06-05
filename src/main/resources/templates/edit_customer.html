@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
-<table>
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
+    <h1>Edycja klienta</h1>
+    <table class="table table-bordered">
     <form method="post" action="/save_customer" th:object="${customer}">
         <tr><td>Imie:</td><td> Nazwisko:</td><td>Email:</td><td>Telefon:</td></tr>
         <tr>
@@ -16,8 +15,9 @@
             <td><input type="text" th:field="*{email}"></td>
             <td><input type="text" th:field="*{phone}"></td>
         </tr>
-        <tr><button type="submit">Zapis</button></tr>
+        <tr><td><button type="submit">Zapis</button></td></tr>
     </form>
 </table>
+</div>
 </body>
 </html>

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Edycja produktu</title>
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
+
 <h1>Edycja produktu</h1>
-<table>
+    <table class="table table-bordered">
     <form method="post" action="#" th:action="@{'/save_edited_product/'+${id}}" th:object="${product}">
         <tr><td>Nazwa:</td><td> Cena standardowa:</td><td>Jednostka:</td></tr>
         <tr>
@@ -19,8 +18,9 @@
                 </select>
             </td>
         </tr>
-        <tr><button type="submit">Zapis</button></tr>
+        <tr><td><button type="submit">Zapis</button></td></tr>
     </form>
 </table>
+</div>
 </body>
 </html>

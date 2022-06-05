@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Rejestracja zakończona</title>
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
-<div class="container">
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
     <i class="fa-regular fa-face-smile fa-10x"></i>
     <h1>Rejestracja zakończona</h1>
     <a href="#" th:href="@{/}">Powrót do strony głównej</a>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+    <meta charset="UTF-8">
+    <title>Edycja zamówienia zakupu</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+<header th:fragment="menu">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg text-white">
+        <a style="padding-left:20px" class="navbar-brand" th:href="@{/}">WarehouseApp</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" th:href="@{/show_delivery_list}">Dostawy</a>
+                <a class="nav-item nav-link active" th:href="@{/allprod}">Produkty</a>
+                <a class="nav-item nav-link active" th:href="@{/purchaseorder_list}">Zamówienia zakupu</a>
+                <a class="nav-item nav-link active" th:href="@{/show_all_sales_orders}">Zamówienia sprzedaży</a>
+                <a class="nav-item nav-link active" th:href="@{/show_all_products_stock_value}">Stany magazynowe</a>
+                <a class="nav-item nav-link active" th:href="@{/show_all_customers}">Lista klientów</a>
+                <a class="nav-item nav-link active" th:href="@{/warehouseList}">Lista Magazynów</a>
+                <a class="nav-item nav-link active" th:href="@{/show_all_vendors}">Lista Dostawców</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div th:fragment="container" class="container-xl bg-light bg-gradient" style="height:800px"></div>
+
+</body>
+</html>

@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edycja zamówienia zakupu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
 <form method="post" action="/save_new_delivery" th:object="${orderDelivery}">
-    <table border="1 solid">
+    <table class="table table-bordered">
         <div>
             <tr><td>Nazwa dostawy:</td><td>Data dostawy:</td><td>Zamowienie zakupu</td><td>Dostawcy:</td><td>Magazyn</td></tr>
             <tr>
@@ -56,14 +52,10 @@
                     <button type="submit" th:name="remove_line" th:value="${lineStat.index}">Usun</button>
                 </td>
             </tr>
-            <button type="submit" name="add_line">Dodaj linię</button>
+            <td><button type="submit" name="add_line">Dodaj linię</button><button type="submit">Zapis</button></td>
         </div>
-
-        <tr>
-            <p><button type="submit">Zapis</button></p>
-        </tr>
     </table>
 </form>
-
+</div>
 </body>
 </html>

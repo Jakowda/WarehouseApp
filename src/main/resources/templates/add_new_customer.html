@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
-<br><br>
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" >
+<br>
 <h1>Dodaj nowego klienta</h1>
-<table border="1 solid">
+    <table class="table table-bordered">
     <form method="post" action="/save_customer" th:object="${customer}">
         <tr><td>Imie:</td><td>Nazwisko:</td><td>Adres email:</td><td>Telefon</td></tr>
         <tr>
@@ -21,5 +18,7 @@
         <tr><td><button type="submit">Zapis</button></td></tr>
     </form>
 </table>
+    <br>
+</div>
 </body>
 </html>

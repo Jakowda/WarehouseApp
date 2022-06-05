@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Zaloguj się</title>
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
-<div class="container">
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
     <h1 class="login-header">Zarejestruj się</h1>
     <form action="/register" method="post" th:object="${user}">
         <input th:field="*{email}" placeholder="Adres Email / Nazwa użytkownika" type="email">
@@ -16,8 +13,6 @@
         <button type="submit">Zarejestruj się</button>
     </form>
 </div>
-<br>
-<td><a th:href="@{/}">Wróć do strony głównej</a></td>
 
 </body>
 </html>

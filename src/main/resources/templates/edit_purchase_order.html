@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Edycja zamówienia zakupu</title>
-</head>
+    <head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient" style="height:800px;">
+    <h1>Edycja zamowienia zakupu</h1>
 <form method="post" action="/save_edited_purchaseorder" th:object="${purchaseOrder}">
-    <table border="1 solid">
+    <table class="table table-bordered">
        <div>
            <tr><td>Nazwa zamowienia:</td><td>Data zamówienia:</td><td>Status realizacji zamówienia:</td><td>Dostawca:</td><td>Magazyn</td></tr>
            <tr>
@@ -58,14 +58,12 @@
                    <button type="submit" th:name="remove_line" th:value="${lineStat.index}">Usun</button>
                </td>
            </tr>
-           <button type="submit" name="add_line">Dodaj linię</button>
+           <td><button type="submit" name="add_line">Dodaj linię</button></td><td><button type="submit">Zapis</button></td>
+
        </div>
 
-        <tr>
-            <p><button type="submit">Zapis</button></p>
-        </tr>
     </table>
 </form>
-
+</div>
 </body>
 </html>

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edycja dostawy</title>
-</head>
+<head th:replace="fragments :: html_head"/>
 <body>
-<header id="header" class="alt" th:include="menu :: title-menu" />
-
+<header  class="" th:include="fragments :: menu"/>
+<div class="container-xl bg-light bg-gradient">
 <h1 th:text="|Edytujesz ${orderDelivery.deliveryName}|">Edytujesz</h1>
 <form method="post" action="/save_edited_delivery" th:object="${orderDelivery}">
-    <table border="1 solid">
+    <table class="table table-bordered">
         <div>
             <tr><td>Nazwa dostawy:</td><td>Data dostawy:</td><td>Zamowienie zakupu</td><td>Dostawcy:</td><td>Magazyn</td></tr>
             <tr>
@@ -51,17 +48,14 @@
                     <input th:field="*{deliveryLineList[__${lineStat.index}__].deliveredAmount}"></td>
                 </td>
                 <input th:field="*{deliveryLineList[__${lineStat.index}__].orderDelivery}" type="hidden">
-                <td>
-                    <button type="submit" th:name="remove_line" th:value="${lineStat.index}">Usun</button>
-                </td>
+                <td><button type="submit" th:name="remove_line" th:value="${lineStat.index}">Usun</button></td>
             </tr>
-            <td><button type="submit" name="add_line">Dodaj linię</button></td>
+            <td><button type="submit" name="add_line">Dodaj linię</button></td><td><button type="submit">Zapis</button></td>
         </div>
         <tr>
-            <p><button type="submit">Zapis</button></p>
         </tr>
     </table>
 </form>
-
+</div>
 </body>
 </html>
